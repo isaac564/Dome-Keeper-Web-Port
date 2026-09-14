@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # change to your default branch name if different
+      - main  # Change to "master" if your default branch is master
 
 permissions:
   contents: read
@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          lfs: true # <--- This downloads the actual game file, not the pointer
+          lfs: true # This explicitly forces GitHub to download the real game data
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -28,7 +28,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Change this if your HTML/PCK files are inside a subfolder
+          path: '.' # If your index.html is in a subfolder, change this to './subfolder-name'
 
       - name: Deploy to GitHub Pages
         id: deployment
